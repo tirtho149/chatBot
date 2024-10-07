@@ -17,14 +17,15 @@
                 <div class="chatbot-message">
                     <p class="chatbot-text">Hi! I'm MODELS👋 It's great to see you!</p>
                 </div>
+                <!-- Additional messages will be appended here -->
             </div>
             <form id="input-form">
-                <message-container>
-                    <input id="input-field" type="text" placeholder="Type your message here">
+                <div class="message-container">
+                    <textarea id="input-field" placeholder="Type your message here" rows="3"></textarea>
                     <button id="submit-button" type="submit">
-                        <img class="send-icon" src="send-message.png" alt="">
+                        <img class="send-icon" src="send-message.png" alt="Send">
                     </button>
-                </message-container>
+                </div>
             </form>
         </div>  
     </div>
@@ -36,3 +37,4 @@
     <script src="chatbot.js"></script>
 </body>
 </html>
+
