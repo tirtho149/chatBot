@@ -6,7 +6,7 @@ body {
 }
 
 .chatbot-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -23,16 +23,19 @@ body {
 }
 
 #chatbot {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Adjust the ratios for history and input area */
     height: 400px;
 }
 
-#conversation {
-    flex: 1;
+#history {
     padding: 15px;
-    overflow-y: auto;
-    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    overflow-y: auto; /* Allow scrolling for history */
+}
+
+#conversation {
+    margin-bottom: 10px;
 }
 
 .chatbot-message {
@@ -45,6 +48,12 @@ body {
     border-radius: 5px;
     max-width: 80%;
     word-wrap: break-word;
+}
+
+#input-form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
 }
 
 .message-container {
@@ -70,4 +79,10 @@ body {
 .send-icon {
     width: 25px; /* Adjust the size of the send icon */
     height: 25px;
+}
+
+h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333;
 }
