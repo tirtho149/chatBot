@@ -24,7 +24,7 @@ body {
 
 #chatbot {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Adjust the ratios for history and input area */
+    grid-template-columns: 2fr 1fr; /* Left column for history, right for input area */
     height: 400px;
 }
 
@@ -50,10 +50,15 @@ body {
     word-wrap: break-word;
 }
 
-#input-form {
+#input-area {
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    justify-content: flex-end; /* Align the input area to the bottom */
+}
+
+#input-form {
+    display: flex;
 }
 
 .message-container {
