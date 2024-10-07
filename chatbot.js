@@ -1,6 +1,7 @@
 // Get chatbot elements
 const chatbot = document.getElementById('chatbot');
-const conversation = document.getElementById('conversation');
+const conversationLeft = document.getElementById('conversation-left');
+const conversationRight = document.getElementById('conversation-right');
 const inputForm = document.getElementById('input-form');
 const inputField = document.getElementById('input-field');
 
@@ -16,23 +17,30 @@ inputForm.addEventListener('submit', async function(event) {
     inputField.value = '';
     const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
 
-    // Add user input to conversation
-    let message = document.createElement('div');
-    message.classList.add('chatbot-message', 'user-message');
-    message.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${input} <span class="time">${currentTime}</span></p>`;
-    conversation.appendChild(message);
+    // Add user input to conversation (left section)
+    let userMessage = document.createElement('div');
+    userMessage.classList.add('chatbot-message', 'user-message');
+    userMessage.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${input}</p>`;
+    conversationLeft.appendChild(userMessage);
 
     // Generate chatbot response
     const response = await getChatbotResponse(input);
 
-    // Add chatbot response to conversation
-    message = document.createElement('div');
-    message.classList.add('chatbot-message', 'chatbot');
-    message.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${response} <span class="time">${currentTime}</span></p>`;
-    conversation.appendChild(message);
+    // Add chatbot response to both conversation sections
+    const chatbotMessageLeft = document.createElement('div');
+    chatbotMessageLeft.classList.add('chatbot-message', 'chatbot');
+    chatbotMessageLeft.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${response}</p>`;
+    conversationLeft.appendChild(chatbotMessageLeft);
 
-    // Scroll to the bottom of the conversation
-    message.scrollIntoView({ behavior: "smooth" });
+    const chatbotMessageRight = document.createElement('div');
+    chatbotMessageRight.classList.add('chatbot-message', 'chatbot');
+    chatbotMessageRight.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${response}</p>`;
+    conversationRight.appendChild(chatbotMessageRight);
+
+    // Scroll to the bottom of the left conversation section
+    conversationLeft.scrollTop = conversationLeft.scrollHeight;
+    // Scroll to the bottom of the right conversation section
+    conversationRight.scrollTop = conversationRight.scrollHeight;
 });
 
 // Function to get response from OpenAI
@@ -45,7 +53,7 @@ async function getChatbotResponse(userMessage) {
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     const requestBody = {
-        model: 'gpt-3.5-turbo', // Model of choice, you can switch to gpt-4 if you have access
+        model: 'gpt-3.5-turbo', // Model of choice
         messages: [{ role: 'user', content: userMessage }],
         max_tokens: 100,
         temperature: 0.7,
@@ -63,8 +71,3 @@ async function getChatbotResponse(userMessage) {
     const data = await response.json();
     return data.choices[0].message.content; // Extracting response
 }
-
-// Tab switch alert
-window.onblur = function () { 
-    alert('Trying to switch tabs, eh!'); 
-};
