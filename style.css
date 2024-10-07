@@ -23,19 +23,15 @@ body {
 }
 
 #chatbot {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Left column for history, right for input area */
-    height: 400px;
-}
-
-#history {
-    padding: 15px;
-    border-right: 1px solid #ddd;
-    overflow-y: auto; /* Allow scrolling for history */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    height: 400px; /* Set fixed height for the chatbot area */
 }
 
 #conversation {
-    margin-bottom: 10px;
+    flex: 1; /* Take up remaining space */
+    padding: 15px;
+    overflow-y: auto; /* Allow scrolling for conversation */
 }
 
 .chatbot-message {
@@ -52,9 +48,6 @@ body {
 
 #input-area {
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Align the input area to the bottom */
 }
 
 #input-form {
@@ -84,10 +77,4 @@ body {
 .send-icon {
     width: 25px; /* Adjust the size of the send icon */
     height: 25px;
-}
-
-h2 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #333;
 }
