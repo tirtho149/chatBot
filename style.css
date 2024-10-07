@@ -1,80 +1,96 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background-color: #e0f7fa; /* Light blue background */
 }
 
 .chatbot-container {
-    max-width: 800px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Full height */
+    padding: 20px;
 }
 
 #header {
-    background-color: #0078D4;
-    color: white;
-    padding: 10px;
     text-align: center;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    margin-bottom: 20px;
 }
 
 #chatbot {
+    flex: 1; /* Take remaining space */
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    height: 400px; /* Set fixed height for the chatbot area */
+    flex-direction: column;
+    border: 1px solid #ccc; /* Border around chatbot */
+    border-radius: 10px;
+    background-color: #ffffff; /* White background for chatbot area */
+    overflow-y: auto; /* Allow scrolling */
+    padding: 10px;
 }
 
 #conversation {
-    flex: 1; /* Take up remaining space */
-    padding: 15px;
-    overflow-y: auto; /* Allow scrolling for conversation */
+    flex: 1; /* Take remaining space */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow scrolling */
 }
 
 .chatbot-message {
-    margin-bottom: 10px;
+    margin: 5px 0;
 }
 
-.chatbot-text {
-    background-color: #e6f7ff;
+.user-message .chatbot-text {
+    background-color: #81d4fa; /* Light blue for user messages */
+    color: black;
     padding: 10px;
-    border-radius: 5px;
-    max-width: 80%;
-    word-wrap: break-word;
+    border-radius: 10px;
+    max-width: 70%; /* Limit message width */
+    align-self: flex-end; /* Align user messages to the right */
 }
 
-#input-area {
-    padding: 15px;
+.chatbot .chatbot-text {
+    background-color: #e1bee7; /* Light purple for bot messages */
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%; /* Limit message width */
+    align-self: flex-start; /* Align bot messages to the left */
 }
 
-#input-form {
+.input-container {
     display: flex;
-}
-
-.message-container {
-    display: flex;
-    align-items: flex-end;
+    margin-top: 10px;
 }
 
 #input-field {
-    flex: 1;
+    flex: 1; /* Take available space */
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    resize: none; /* Prevent resizing of the textarea */
+    color: black; /* Text color */
+    background-color: white; /* White background for input field */
+    font-size: 16px; /* Font size */
 }
 
 #submit-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
 .send-icon {
-    width: 25px; /* Adjust the size of the send icon */
-    height: 25px;
+    width: 24px; /* Icon size */
+    height: 24px; /* Icon size */
+}
+
+.time {
+    font-size: 0.8em; /* Smaller font for timestamps */
+    color: #aaa; /* Lighter color for timestamps */
+    margin-left: 10px; /* Space between message and timestamp */
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
 }
