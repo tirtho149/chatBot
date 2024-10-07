@@ -19,7 +19,7 @@ inputForm.addEventListener('submit', async function(event) {
     // Add user input to conversation
     let message = document.createElement('div');
     message.classList.add('chatbot-message', 'user-message');
-    message.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${input}</p>`;
+    message.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${input} <span class="time">${currentTime}</span></p>`;
     conversation.appendChild(message);
 
     // Generate chatbot response
@@ -28,8 +28,10 @@ inputForm.addEventListener('submit', async function(event) {
     // Add chatbot response to conversation
     message = document.createElement('div');
     message.classList.add('chatbot-message', 'chatbot');
-    message.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${response}</p>`;
+    message.innerHTML = `<p class="chatbot-text" sentTime="${currentTime}">${response} <span class="time">${currentTime}</span></p>`;
     conversation.appendChild(message);
+
+    // Scroll to the bottom of the conversation
     message.scrollIntoView({ behavior: "smooth" });
 });
 
@@ -63,6 +65,6 @@ async function getChatbotResponse(userMessage) {
 }
 
 // Tab switch alert
-window.onblur = function (tabs) { 
+window.onblur = function () { 
     alert('Trying to switch tabs, eh!'); 
 };
