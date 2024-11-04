@@ -1,88 +1,61 @@
+/* styles.css */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #E0F7FA; /* Light blue background */
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-.chatbot-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #0288D1;
-    border-radius: 10px;
-    background-color: #ffffff; /* White background for the container */
+h1 {
+  text-align: center;
 }
 
-#header {
-    text-align: center;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
-#chatbot {
-    display: flex;
-    flex-direction: column;
+.column {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-#conversation {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    height: 400px; /* Set height for conversation area */
-    overflow-y: auto; /* Enable scrolling */
-    border: 1px solid #0288D1;
-    border-radius: 5px;
+h2 {
+  font-size: 18px;
+  color: #333;
 }
 
-.conversation-section {
-    flex: 1; /* Allow both sections to take equal space */
-    padding: 10px;
-    overflow-y: auto; /* Enable scrolling for each section */
+label {
+  display: block;
+  margin-top: 10px;
 }
 
-#conversation-left {
-    border-right: 1px solid #0288D1; /* Divider between left and right sections */
+input[type="file"] {
+  margin-top: 5px;
 }
 
-.chatbot-message {
-    margin-bottom: 10px;
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
-.user-message {
-    text-align: right; /* Align user messages to the right */
+button:hover {
+  background-color: #45a049;
 }
 
-.chatbot {
-    text-align: left; /* Align chatbot messages to the left */
-}
-
-.chatbot-text {
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #B3E5FC; /* Light blue for chatbot messages */
-}
-
-.input-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-#input-field {
-    width: 85%;
-    padding: 10px;
-    border: 1px solid #0288D1;
-    border-radius: 5px;
-}
-
-#submit-button {
-    background-color: #0288D1; /* Button color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 10px;
-}
-
-#submit-button img {
-    width: 20px; /* Set the width for the send icon */
-    height: 20px; /* Set the height for the send icon */
+p {
+  font-size: 14px;
+  color: #555;
+  margin-top: 15px;
 }
