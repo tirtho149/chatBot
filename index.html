@@ -1,128 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Processing Tool</title>
+  <title>Data Processing Tool with Chatbot</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Data Processing Tool</h1>
-  <div class="grid-container">
-    <!-- Column for each function -->
-    <div class="column">
-      <h2>Saving to NPZ</h2>
-      <label for="savingFile">NetCDF (.nc) File:</label>
-      <input type="file" id="savingFile" accept=".nc">
-      <button onclick="processSavingToNPZ()">Process</button>
-      <p id="savingOutput"></p>
+  <div class="main-container">
+    <!-- Chatbot section on the left side -->
+    <div class="chatbot-container">
+      <h2>Chatbot Assistant</h2>
+      <div class="chat-window" id="chatWindow">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
     </div>
 
-    <div class="column">
-      <h2>Quality Check</h2>
-      <label for="qualityFile">NPZ File:</label>
-      <input type="file" id="qualityFile" accept=".npz">
-      <button onclick="processQualityCheck()">Process</button>
-      <p id="qualityOutput"></p>
-    </div>
+    <!-- Content section on the right side with all data processing options -->
+    <div class="content-container">
+      <h1>Data Processing Tool</h1>
+      <div class="grid-container">
+        <!-- Column for each function -->
+        <div class="column">
+          <h2>Saving to NPZ</h2>
+          <label for="savingFile">NetCDF (.nc) File:</label>
+          <input type="file" id="savingFile" accept=".nc">
+          <button onclick="processSavingToNPZ()">Process</button>
+          <p id="savingOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Stacking</h2>
-      <label for="stackFile1">NPZ File 1:</label>
-      <input type="file" id="stackFile1" accept=".npz">
-      <label for="stackFile2">NPZ File 2:</label>
-      <input type="file" id="stackFile2" accept=".npz">
-      <button onclick="processStacking()">Process</button>
-      <p id="stackOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Quality Check</h2>
+          <label for="qualityFile">NPZ File:</label>
+          <input type="file" id="qualityFile" accept=".npz">
+          <button onclick="processQualityCheck()">Process</button>
+          <p id="qualityOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Calendar Conversion</h2>
-      <label for="calendarFile">NPZ File:</label>
-      <input type="file" id="calendarFile" accept=".npz">
-      <button onclick="processCalendarConversion()">Process</button>
-      <p id="calendarOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Stacking</h2>
+          <label for="stackFile1">NPZ File 1:</label>
+          <input type="file" id="stackFile1" accept=".npz">
+          <label for="stackFile2">NPZ File 2:</label>
+          <input type="file" id="stackFile2" accept=".npz">
+          <button onclick="processStacking()">Process</button>
+          <p id="stackOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Unit Conversion</h2>
-      <label for="unitFile">NPZ File:</label>
-      <input type="file" id="unitFile" accept=".npz">
-      <button onclick="processUnitConversion()">Process</button>
-      <p id="unitOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Calendar Conversion</h2>
+          <label for="calendarFile">NPZ File:</label>
+          <input type="file" id="calendarFile" accept=".npz">
+          <button onclick="processCalendarConversion()">Process</button>
+          <p id="calendarOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Temporal Aggregation</h2>
-      <label for="temporalFile">NPZ File:</label>
-      <input type="file" id="temporalFile" accept=".npz">
-      <button onclick="processTemporalAggregation()">Process</button>
-      <p id="temporalOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Unit Conversion</h2>
+          <label for="unitFile">NPZ File:</label>
+          <input type="file" id="unitFile" accept=".npz">
+          <button onclick="processUnitConversion()">Process</button>
+          <p id="unitOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Cropping</h2>
-      <label for="cropFile">NPZ File:</label>
-      <input type="file" id="cropFile" accept=".npz">
-      <button onclick="processCropping()">Process</button>
-      <p id="cropOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Temporal Aggregation</h2>
+          <label for="temporalFile">NPZ File:</label>
+          <input type="file" id="temporalFile" accept=".npz">
+          <button onclick="processTemporalAggregation()">Process</button>
+          <p id="temporalOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Slicing</h2>
-      <label for="slicingFile">NPZ File:</label>
-      <input type="file" id="slicingFile" accept=".npz">
-      <button onclick="processSlicing()">Process</button>
-      <p id="slicingOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Cropping</h2>
+          <label for="cropFile">NPZ File:</label>
+          <input type="file" id="cropFile" accept=".npz">
+          <button onclick="processCropping()">Process</button>
+          <p id="cropOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Statistics</h2>
-      <label for="statisticsFile">NPZ File:</label>
-      <input type="file" id="statisticsFile" accept=".npz">
-      <button onclick="processStatistics()">Process</button>
-      <p id="statisticsOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Slicing</h2>
+          <label for="slicingFile">NPZ File:</label>
+          <input type="file" id="slicingFile" accept=".npz">
+          <button onclick="processSlicing()">Process</button>
+          <p id="slicingOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Plot (Still)</h2>
-      <label for="plotFile">NPZ File:</label>
-      <input type="file" id="plotFile" accept=".npz">
-      <button onclick="processPlot()">Process</button>
-      <p id="plotOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Statistics</h2>
+          <label for="statisticsFile">NPZ File:</label>
+          <input type="file" id="statisticsFile" accept=".npz">
+          <button onclick="processStatistics()">Process</button>
+          <p id="statisticsOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Animation</h2>
-      <label for="animationFile">NPZ File:</label>
-      <input type="file" id="animationFile" accept=".npz">
-      <button onclick="processAnimation()">Process</button>
-      <p id="animationOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Plot (Still)</h2>
+          <label for="plotFile">NPZ File:</label>
+          <input type="file" id="plotFile" accept=".npz">
+          <button onclick="processPlot()">Process</button>
+          <p id="plotOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>TIFF to NPZ</h2>
-      <label for="tiffFile">TIFF File:</label>
-      <input type="file" id="tiffFile" accept=".tiff">
-      <button onclick="processTiffToNPZ()">Process</button>
-      <p id="tiffOutput"></p>
-    </div>
+        <div class="column">
+          <h2>Animation</h2>
+          <label for="animationFile">NPZ File:</label>
+          <input type="file" id="animationFile" accept=".npz">
+          <button onclick="processAnimation()">Process</button>
+          <p id="animationOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Bias Correction</h2>
-      <label for="biasFile">NPZ File:</label>
-      <input type="file" id="biasFile" accept=".npz">
-      <button onclick="processBiasCorrection()">Process</button>
-      <p id="biasOutput"></p>
-    </div>
+        <div class="column">
+          <h2>TIFF to NPZ</h2>
+          <label for="tiffFile">TIFF File:</label>
+          <input type="file" id="tiffFile" accept=".tiff">
+          <button onclick="processTiffToNPZ()">Process</button>
+          <p id="tiffOutput"></p>
+        </div>
 
-    <div class="column">
-      <h2>Downscaling</h2>
-      <label for="downscaleFile">NPZ File:</label>
-      <input type="file" id="downscaleFile" accept=".npz">
-      <button onclick="processDownscaling()">Process</button>
-      <p id="downscaleOutput"></p>
+        <div class="column">
+          <h2>Bias Correction</h2>
+          <label for="biasFile">NPZ File:</label>
+          <input type="file" id="biasFile" accept=".npz">
+          <button onclick="processBiasCorrection()">Process</button>
+          <p id="biasOutput"></p>
+        </div>
+
+        <div class="column">
+          <h2>Downscaling</h2>
+          <label for="downscaleFile">NPZ File:</label>
+          <input type="file" id="downscaleFile" accept=".npz">
+          <button onclick="processDownscaling()">Process</button>
+          <p id="downscaleOutput"></p>
+        </div>
+      </div>
     </div>
   </div>
 
