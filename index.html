@@ -12,10 +12,10 @@
     <div class="chatbot-container">
       <h2>Chatbot Assistant</h2>
       <div class="chat-window" id="chatWindow">
-        <!-- Messages will appear here -->
+        <!-- Chat messages will appear here dynamically -->
       </div>
       <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="Type a message...">
+        <input type="text" id="chatInput" placeholder="Type a message..." onkeydown="if(event.key === 'Enter') sendMessage()">
         <button onclick="sendMessage()">Send</button>
       </div>
     </div>
@@ -24,7 +24,8 @@
     <div class="content-container">
       <h1>Data Processing Tool</h1>
       <div class="grid-container">
-        <!-- Column for each function -->
+        <!-- Data Processing Functionality Sections -->
+        
         <div class="column">
           <h2>Saving to NPZ</h2>
           <label for="savingFile">NetCDF (.nc) File:</label>
@@ -138,6 +139,7 @@
           <button onclick="processDownscaling()">Process</button>
           <p id="downscaleOutput"></p>
         </div>
+
       </div>
     </div>
   </div>
